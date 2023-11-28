@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of xsoft/mason-tag.
+ * This file is part of litalino/mason.
  *
  * Copyright (c) FriendsOfFlarum.
  *
@@ -9,13 +9,13 @@
  * file that was distributed with this source code.
  */
 
-namespace Xsoft\MasonTag;
+namespace Litalino\Mason;
 
 use Flarum\Api\Controller\ShowForumController;
 use Flarum\User\User;
+use Litalino\Mason\Repositories\ByTagRepository;
+use Litalino\Mason\Repositories\FieldRepository;
 use Psr\Http\Message\ServerRequestInterface;
-use Xsoft\MasonTag\Repositories\ByTagRepository;
-use Xsoft\MasonTag\Repositories\FieldRepository;
 
 class LoadForumFieldsRelationship
 {
@@ -38,7 +38,7 @@ class LoadForumFieldsRelationship
 
         // Fields need to be pre-loaded for the discussion composer, and also to be able to show empty fields on discussions
         // We first try the permissions the users are most likely to have
-        if ($actor->can('xsoft-mason-tag.see-other-fields') || $actor->can('xsoft-mason-tag.fill-fields') || $actor->can('xsoft-mason-tag.see-own-fields')) {
+        if ($actor->can('litalino-mason.see-other-fields') || $actor->can('litalino-mason.fill-fields') || $actor->can('litalino-mason.see-own-fields')) {
             $data['masonFields'] = $fields->all();
             $data['masonByTags'] = $bytags->all();
         } else {

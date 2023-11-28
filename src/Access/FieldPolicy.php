@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of xsoft/mason-tag.
+ * This file is part of litalino/mason.
  *
  * Copyright (c) FriendsOfFlarum.
  *
@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Xsoft\MasonTag\Access;
+namespace Litalino\Mason\Access;
 
 use Flarum\User\Access\AbstractPolicy;
 use Flarum\User\User;
-use Xsoft\MasonTag\Field;
+use Litalino\Mason\Field;
 
 class FieldPolicy extends AbstractPolicy
 {
@@ -42,7 +42,7 @@ class FieldPolicy extends AbstractPolicy
      */
     public function skipField(User $user, Field $field)
     {
-        if ($field->min_answers_count === 0 || $user->can('xsoft-mason-tag.skip-required-fields')) {
+        if ($field->min_answers_count === 0 || $user->can('litalino-mason.skip-required-fields')) {
             return $this->allow();
         }
     }

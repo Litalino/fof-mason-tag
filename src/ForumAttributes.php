@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of xsoft/mason-tag.
+ * This file is part of litalino/mason.
  *
  * Copyright (c) FriendsOfFlarum.
  *
@@ -9,44 +9,49 @@
  * file that was distributed with this source code.
  */
 
-namespace Xsoft\MasonTag;
+namespace Litalino\Mason;
 
 use Flarum\Api\Serializer\ForumSerializer;
 use Flarum\Settings\SettingsRepositoryInterface;
 
 class ForumAttributes
 {
+    /**
+     * @var SettingsRepositoryInterface
+     */
+    protected $settings;
+
+    public function __construct(SettingsRepositoryInterface $settings)
+    {
+        $this->settings = $settings;
+    }
+
     public function __invoke(ForumSerializer $serializer): array
     {
-        /**
-         * @var $settings SettingsRepositoryInterface
-         */
-        $settings = resolve(SettingsRepositoryInterface::class);
-
         $actor = $serializer->getActor();
 
-        $canFill = $actor->can('xsoft-mason-tag.fill-fields');
-        $canSeeSome = $actor->can('xsoft-mason-tag.see-other-fields') || $actor->can('xsoft-mason-tag.see-own-fields');
+        $canFill = $actor->can('litalino-mason.fill-fields');
+        $canSeeSome = $actor->can('litalino-mason.see-other-fields') || $actor->can('litalino-mason.see-own-fields');
 
         $attributes = [
             'canFillMasonFields' => $canFill,
         ];
 
         if ($canFill || $canSeeSome) {
-            $attributes['xsoft-mason-tag.fields-section-title'] = $settings->get('xsoft-mason-tag.fields-section-title', '');
-            $attributes['xsoft-mason-tag.column-count'] = (int) $settings->get('xsoft-mason-tag.column-count', 1);
+            $attributes['litalino-mason.fields-section-title'] = $this->settings->get('litalino-mason.fields-section-title', '');
+            $attributes['litalino-mason.column-count'] = (int) $this->settings->get('litalino-mason.column-count', 1);
         }
 
         if ($canFill) {
-            $attributes['xsoft-mason-tag.by-tag'] = (bool) $settings->get('xsoft-mason-tag.by-tag', false);
-            $attributes['xsoft-mason-tag.labels-as-placeholders'] = (bool) $settings->get('xsoft-mason-tag.labels-as-placeholders', false);
-            $attributes['xsoft-mason-tag.tags-as-fields'] = (bool) $settings->get('xsoft-mason-tag.tags-as-fields', false);
-            $attributes['xsoft-mason-tag.tags-field-name'] = $settings->get('xsoft-mason-tag.tags-field-name', '');
+            $attributes['litalino-mason.by-tag'] = (bool) $this->settings->get('litalino-mason.by-tag', false);
+            $attributes['litalino-mason.labels-as-placeholders'] = (bool) $this->settings->get('litalino-mason.labels-as-placeholders', false);
+            $attributes['litalino-mason.tags-as-fields'] = (bool) $this->settings->get('litalino-mason.tags-as-fields', false);
+            $attributes['litalino-mason.tags-field-name'] = $this->settings->get('litalino-mason.tags-field-name', '');
         }
 
         if ($canSeeSome) {
-            $attributes['xsoft-mason-tag.fields-in-hero'] = (bool) $settings->get('xsoft-mason-tag.fields-in-hero', false);
-            $attributes['xsoft-mason-tag.hide-empty-fields-section'] = (bool) $settings->get('xsoft-mason-tag.hide-empty-fields-section', false);
+            $attributes['litalino-mason.fields-in-hero'] = (bool) $this->settings->get('litalino-mason.fields-in-hero', false);
+            $attributes['litalino-mason.hide-empty-fields-section'] = (bool) $this->settings->get('litalino-mason.hide-empty-fields-section', false);
         }
 
         return $attributes;

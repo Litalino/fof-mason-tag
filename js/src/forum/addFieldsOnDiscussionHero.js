@@ -6,7 +6,7 @@ import FieldsViewer from './components/FieldsViewer';
 
 export default function () {
     extend(DiscussionHero.prototype, 'items', function (items) {
-        if (!this.attrs.discussion.canSeeMasonAnswers() || !app.forum.attribute('xsoft-mason-tag.fields-in-hero')) {
+        if (!this.attrs.discussion.canSeeMasonAnswers() || !app.forum.attribute('litalino-mason.fields-in-hero')) {
             return;
         }
 

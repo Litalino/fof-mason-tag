@@ -83,7 +83,7 @@ export default class FieldEditDropdown extends Component {
     placeholderHidden(field) {
         // If labels are hidden, we need to always show the default value (even if it can't be selected)
         // Otherwise when the field is "required" you can't find the name of the field anymore once something is selected
-        if (app.forum.attribute('xsoft-mason-tag.labels-as-placeholders')) {
+        if (app.forum.attribute('litalino-mason.labels-as-placeholders')) {
             return false;
         }
 
@@ -93,7 +93,7 @@ export default class FieldEditDropdown extends Component {
     selectPlaceholder(field) {
         let text = '';
 
-        if (app.forum.attribute('xsoft-mason-tag.labels-as-placeholders')) {
+        if (app.forum.attribute('litalino-mason.labels-as-placeholders')) {
             text += field.name();
 
             if (field.required()) {
@@ -104,9 +104,9 @@ export default class FieldEditDropdown extends Component {
         }
 
         if (field.required()) {
-            text += app.translator.trans('xsoft-mason-tag.forum.answers.choose-option');
+            text += app.translator.trans('litalino-mason.forum.answers.choose-option');
         } else {
-            text += app.translator.trans('xsoft-mason-tag.forum.answers.no-option-selected');
+            text += app.translator.trans('litalino-mason.forum.answers.no-option-selected');
         }
 
         return text;

@@ -11,7 +11,7 @@ import addFieldsOnDiscussionHero from './addFieldsOnDiscussionHero';
 import addFieldsOnDiscussionPost from './addFieldsOnDiscussionPost';
 import patchModelIdentifier from './patchModelIdentifier';
 
-app.initializers.add('xsoft-ict-mason-tag', (app) => {
+app.initializers.add('litalino-mason', (app) => {
     app.store.models['mason-fields'] = Field;
     app.store.models['mason-answers'] = Answer;
     app.store.models['mason-bytags'] = ByTag;

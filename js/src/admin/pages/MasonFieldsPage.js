@@ -15,7 +15,7 @@ export default class MasonFieldsPage extends ExtensionPage {
 
         app.request({
             method: 'GET',
-            url: app.forum.attribute('apiUrl') + '/xsoft/mason-tag/fields',
+            url: app.forum.attribute('apiUrl') + '/litalino/mason/fields',
         }).then((result) => {
             app.store.pushPayload(result);
             m.redraw();
@@ -60,14 +60,14 @@ export default class MasonFieldsPage extends ExtensionPage {
         return (
             <div className="ExtensionPage-settings">
                 <div className="container">
-                    <h2>{app.translator.trans('xsoft-mason-tag.admin.titles.fields')}</h2>
+                    <h2>{app.translator.trans('litalino-mason.admin.titles.fields')}</h2>
                     <div className="Mason-Container">
                         <div className="js-fields-container">{fieldsList}</div>
                         <FieldEdit />
                     </div>
-                    <h2>{app.translator.trans('xsoft-mason-tag.admin.titles.tag-settings')}</h2>
+                    <h2>{app.translator.trans('litalino-mason.admin.titles.tag-settings')}</h2>
                     <MasonSettingTags />
-                    <h2>{app.translator.trans('xsoft-mason-tag.admin.titles.settings')}</h2>
+                    <h2>{app.translator.trans('litalino-mason.admin.titles.settings')}</h2>
                     <MasonSettings />
                 </div>
             </div>
@@ -77,7 +77,7 @@ export default class MasonFieldsPage extends ExtensionPage {
     updateSort(sorting) {
         app.request({
             method: 'POST',
-            url: app.forum.attribute('apiUrl') + '/xsoft/mason-tag/fields/order',
+            url: app.forum.attribute('apiUrl') + '/litalino/mason/fields/order',
             body: {
                 sort: sorting,
             },

@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of xsoft/mason-tag.
+ * This file is part of litalino/mason.
  *
  * Copyright (c) FriendsOfFlarum.
  *
@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Xsoft\MasonTag\Api\Serializers;
+namespace Litalino\Mason\Api\Serializers;
 
 use Flarum\Api\Serializer\AbstractSerializer;
-use Xsoft\MasonTag\Field;
-use Xsoft\MasonTag\Repositories\AnswerRepository;
+use Litalino\Mason\Field;
+use Litalino\Mason\Repositories\AnswerRepository;
 use Tobscure\JsonApi\Collection;
 use Tobscure\JsonApi\Relationship;
 
@@ -41,7 +41,7 @@ class FieldSerializer extends AbstractSerializer
     public function suggestedAnswers($model)
     {
         /**
-         * @var $answers AnswerRepository
+         * @var AnswerRepository $answers
          */
         $answers = resolve(AnswerRepository::class);
 
@@ -51,7 +51,7 @@ class FieldSerializer extends AbstractSerializer
     /**
      * @param Field $model
      *
-     * @return Relationship
+     * @return Relationship|null
      */
     public function allAnswers($model)
     {
@@ -62,7 +62,7 @@ class FieldSerializer extends AbstractSerializer
         }
 
         /**
-         * @var $answers AnswerRepository
+         * @var AnswerRepository $answers
          */
         $answers = resolve(AnswerRepository::class);
 

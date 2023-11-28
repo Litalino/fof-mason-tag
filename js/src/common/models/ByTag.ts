@@ -7,6 +7,6 @@ export default class ByTag extends Model {
     switch = Model.attribute('switch');
 
     apiEndpoint() {
-        return '/xsoft/mason-tag/bytags' + (this.exists ? '/' + this.data.id : '');
+        return '/litalino/mason/bytags' + (this.exists ? '/' + this.data.id : '');
     }
 }

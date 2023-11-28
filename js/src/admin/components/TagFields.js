@@ -13,7 +13,7 @@ export default class TagFields extends Component {
     init() {
         app.request({
             method: 'GET',
-            url: app.forum.attribute('apiUrl') + '/xsoft/mason-tag/bytag',
+            url: app.forum.attribute('apiUrl') + '/litalino/mason/bytag',
         }).then((result) => {
             app.store.pushPayload(result);
             this.initRows();
@@ -67,7 +67,7 @@ export default class TagFields extends Component {
     makeRow(attributes) {
         app.request({
             method: 'POST',
-            url: app.forum.attribute('apiUrl') + '/xsoft/mason-tag/bytag',
+            url: app.forum.attribute('apiUrl') + '/litalino/mason/bytag',
             body: {
                 data: {
                     attributes,
@@ -82,7 +82,7 @@ export default class TagFields extends Component {
     updateRow(field, state) {
         app.request({
             method: 'PATCH',
-            url: app.forum.attribute('apiUrl') + '/xsoft/mason-tag/bytag/' + field.data.id,
+            url: app.forum.attribute('apiUrl') + '/litalino/mason/bytag/' + field.data.id,
             body: {
                 data: {
                     attributes: {
@@ -99,7 +99,7 @@ export default class TagFields extends Component {
     deleteRow(bytag) {
         app.request({
             method: 'DELETE',
-            url: app.forum.attribute('apiUrl') + '/xsoft/mason-tag/bytag/' + bytag.data.id,
+            url: app.forum.attribute('apiUrl') + '/litalino/mason/bytag/' + bytag.data.id,
         }).then((result) => {
             app.store.remove(bytag);
         });

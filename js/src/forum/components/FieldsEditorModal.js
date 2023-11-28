@@ -13,7 +13,7 @@ export default class FieldsEditorModal extends Modal {
         this.dirty = false;
         this.processing = false;
         this.tagRelationship = this.attrs.discussion.data.relationships.tags.data[0];
-        this.byTagEnabled = app.data.resources[0].attributes['xsoft-mason-tag.by-tag'];
+        this.byTagEnabled = app.data.resources[0].attributes['litalino-mason.by-tag'];
 
         // Stays null if the feature is not used
         this.tags = null;
@@ -34,7 +34,7 @@ export default class FieldsEditorModal extends Modal {
     }
 
     title() {
-        return app.translator.trans('xsoft-mason-tag.forum.answers-modal.edit-title', {
+        return app.translator.trans('litalino-mason.forum.answers-modal.edit-title', {
             title: <em>{this.attrs.discussion.title()}</em>,
         });
     }
@@ -66,7 +66,7 @@ export default class FieldsEditorModal extends Modal {
                 </div>
                 <div className="Modal-footer">
                     <Button className="Button Button--primary" loading={this.processing} disabled={!this.dirty} onclick={this.saveAnswers.bind(this)}>
-                        {app.translator.trans('xsoft-mason-tag.forum.answers-modal.save')}
+                        {app.translator.trans('litalino-mason.forum.answers-modal.save')}
                     </Button>
                 </div>
             </>

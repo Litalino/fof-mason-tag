@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of xsoft/mason-tag.
+ * This file is part of litalino/mason.
  *
  * Copyright (c) FriendsOfFlarum.
  *
@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Xsoft\MasonTag\Access;
+namespace Litalino\Mason\Access;
 
 use Flarum\Discussion\Discussion;
 use Flarum\User\Access\AbstractPolicy;
@@ -19,29 +19,29 @@ class DiscussionPolicy extends AbstractPolicy
 {
     public function seeMasonAnswers(User $actor, Discussion $discussion)
     {
-        if ($actor->can('xsoft-mason-tag.see-other-fields')) {
+        if ($actor->can('litalino-mason.see-other-fields')) {
             return $this->allow();
         }
 
-        if ($actor->can('xsoft-mason-tag.see-own-fields') && $discussion->user_id == $actor->id) {
+        if ($actor->can('litalino-mason.see-own-fields') && $discussion->user_id == $actor->id) {
             return $this->allow();
         }
     }
 
     public function fillMasonAnswers(User $actor, Discussion $discussion)
     {
-        if ($actor->can('xsoft-mason-tag.fill-fields')) {
+        if ($actor->can('litalino-mason.fill-fields')) {
             return $this->allow();
         }
     }
 
     public function updateMasonAnswers(User $actor, Discussion $discussion)
     {
-        if ($actor->can('xsoft-mason-tag.update-other-fields')) {
+        if ($actor->can('litalino-mason.update-other-fields')) {
             return $this->allow();
         }
 
-        if ($actor->can('xsoft-mason-tag.update-own-fields') && $discussion->user_id == $actor->id) {
+        if ($actor->can('litalino-mason.update-own-fields') && $discussion->user_id == $actor->id) {
             return $this->allow();
         }
     }

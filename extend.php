@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of xsoft/mason-tag.
+ * This file is part of litalino/mason.
  *
  * Copyright (c) FriendsOfFlarum.
  *
@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Xsoft\MasonTag;
+namespace Litalino\Mason;
 
 use Flarum\Api\Controller\CreateDiscussionController;
 use Flarum\Api\Controller\ListDiscussionsController;
@@ -21,10 +21,10 @@ use Flarum\Api\Serializer\ForumSerializer;
 use Flarum\Discussion\Discussion;
 use Flarum\Discussion\Event\Saving;
 use Flarum\Extend;
-use Xsoft\MasonTag\Api\Serializers\AnswerSerializer;
-use Xsoft\MasonTag\Api\Serializers\ByTagSerializer;
-use Xsoft\MasonTag\Api\Serializers\FieldSerializer;
-use Xsoft\MasonTag\Listeners\DiscussionSaving;
+use Litalino\Mason\Api\Serializers\AnswerSerializer;
+use Litalino\Mason\Api\Serializers\ByTagSerializer;
+use Litalino\Mason\Api\Serializers\FieldSerializer;
+use Litalino\Mason\Listeners\DiscussionSaving;
 
 return [
     (new Extend\Frontend('forum'))
@@ -37,24 +37,24 @@ return [
 
     (new Extend\Routes('api'))
         // Fields
-        ->post('/xsoft/mason-tag/fields/order', 'xsoft-mason-tag.api.fields.order', Api\Controllers\FieldOrderController::class)
-        ->get('/xsoft/mason-tag/fields', 'xsoft-mason-tag.api.fields.index', Api\Controllers\FieldIndexController::class)
-        ->post('/xsoft/mason-tag/fields', 'xsoft-mason-tag.api.fields.store', Api\Controllers\FieldStoreController::class)
-        ->patch('/xsoft/mason-tag/fields/{id:[0-9]+}', 'xsoft-mason-tag.api.fields.update', Api\Controllers\FieldUpdateController::class)
-        ->delete('/xsoft/mason-tag/fields/{id:[0-9]+}', 'xsoft-mason-tag.api.fields.delete', Api\Controllers\FieldDeleteController::class)
+        ->post('/litalino/mason/fields/order', 'litalino-mason.api.fields.order', Api\Controllers\FieldOrderController::class)
+        ->get('/litalino/mason/fields', 'litalino-mason.api.fields.index', Api\Controllers\FieldIndexController::class)
+        ->post('/litalino/mason/fields', 'litalino-mason.api.fields.store', Api\Controllers\FieldStoreController::class)
+        ->patch('/litalino/mason/fields/{id:[0-9]+}', 'litalino-mason.api.fields.update', Api\Controllers\FieldUpdateController::class)
+        ->delete('/litalino/mason/fields/{id:[0-9]+}', 'litalino-mason.api.fields.delete', Api\Controllers\FieldDeleteController::class)
 
         // Answers
-        ->post('/xsoft/mason-tag/fields/{id:[0-9]+}/answers/order', 'xsoft-mason-tag.api.answers.order', Api\Controllers\AnswerOrderController::class)
-        ->post('/xsoft/mason-tag/fields/{id:[0-9]+}/answers', 'xsoft-mason-tag.api.answers.create', Api\Controllers\AnswerStoreController::class)
-        ->patch('/xsoft/mason-tag/answers/{id:[0-9]+}', 'xsoft-mason-tag.api.answers.update', Api\Controllers\AnswerUpdateController::class)
-        ->delete('/xsoft/mason-tag/answers/{id:[0-9]+}', 'xsoft-mason-tag.api.answers.delete', Api\Controllers\AnswerDeleteController::class)
+        ->post('/litalino/mason/fields/{id:[0-9]+}/answers/order', 'litalino-mason.api.answers.order', Api\Controllers\AnswerOrderController::class)
+        ->post('/litalino/mason/fields/{id:[0-9]+}/answers', 'litalino-mason.api.answers.create', Api\Controllers\AnswerStoreController::class)
+        ->patch('/litalino/mason/answers/{id:[0-9]+}', 'litalino-mason.api.answers.update', Api\Controllers\AnswerUpdateController::class)
+        ->delete('/litalino/mason/answers/{id:[0-9]+}', 'litalino-mason.api.answers.delete', Api\Controllers\AnswerDeleteController::class)
 
         // ByTag // will have to update regex to match names for patch and delete
-        ->post('/xsoft/mason-tag/bytag/order', 'xsoft-mason-tag.api.bytag.order', Api\Controllers\ByTagOrderController::class)
-        ->get('/xsoft/mason-tag/bytag', 'xsoft-mason-tag.api.bytag.index', Api\Controllers\ByTagIndexController::class)
-        ->post('/xsoft/mason-tag/bytag', 'xsoft-mason-tag.api.bytag.store', Api\Controllers\ByTagStoreController::class)
-        ->patch('/xsoft/mason-tag/bytag/{id:[0-9]+}', 'xsoft-mason-tag.api.bytag.update', Api\Controllers\ByTagUpdateController::class)
-        ->delete('/xsoft/mason-tag/bytag/{id:[0-9]+}', 'xsoft-mason-tag.api.bytag.delete', Api\Controllers\ByTagDeleteController::class),
+        ->post('/litalino/mason/bytag/order', 'litalino-mason.api.bytag.order', Api\Controllers\ByTagOrderController::class)
+        ->get('/litalino/mason/bytag', 'litalino-mason.api.bytag.index', Api\Controllers\ByTagIndexController::class)
+        ->post('/litalino/mason/bytag', 'litalino-mason.api.bytag.store', Api\Controllers\ByTagStoreController::class)
+        ->patch('/litalino/mason/bytag/{id:[0-9]+}', 'litalino-mason.api.bytag.update', Api\Controllers\ByTagUpdateController::class)
+        ->delete('/litalino/mason/bytag/{id:[0-9]+}', 'litalino-mason.api.bytag.delete', Api\Controllers\ByTagDeleteController::class),
 
     new Extend\Locales(__DIR__.'/resources/locale'),
 

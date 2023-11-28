@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of xsoft/mason-tag.
+ * This file is part of litalino/mason.
  *
  * Copyright (c) FriendsOfFlarum.
  *
@@ -9,18 +9,18 @@
  * file that was distributed with this source code.
  */
 
-namespace Xsoft\MasonTag\Listeners;
+namespace Litalino\Mason\Listeners;
 
 use Flarum\Discussion\Event\Saving;
 use Flarum\Foundation\ValidationException;
 use Flarum\User\Exception\PermissionDeniedException;
+use Litalino\Mason\Field;
+use Litalino\Mason\Repositories\AnswerRepository;
+use Litalino\Mason\Repositories\FieldRepository;
+use Litalino\Mason\Validators\UserAnswerValidator;
 use Illuminate\Contracts\Validation\Factory;
 use Illuminate\Support\Arr;
-use Xsoft\MasonTag\Repositories\ByTagRepository;
-use Xsoft\MasonTag\Field;
-use Xsoft\MasonTag\Repositories\AnswerRepository;
-use Xsoft\MasonTag\Repositories\FieldRepository;
-use Xsoft\MasonTag\Validators\UserAnswerValidator;
+use Litalino\Mason\Repositories\ByTagRepository;
 
 class DiscussionSaving
 {
@@ -92,10 +92,10 @@ class DiscussionSaving
                 $answer = $this->answers->findOrFail($id);
             } elseif (Arr::has($answerRelation, 'attributes.content') && Arr::has($answerRelation, 'relationships.field.data.id')) {
                 $field = $this->fields->findOrFail(Arr::get($answerRelation, 'relationships.field.data.id'));
-                $content = trim(Arr::get($answerRelation, 'attributes.content'));
+                $content = trim(Arr::get($answerRelation, 'attributes.content', ''));
 
                 /**
-                 * @var $answerValidator UserAnswerValidator
+                 * @var UserAnswerValidator $answerValidator
                  */
                 $answerValidator = resolve(UserAnswerValidator::class);
                 $answerValidator->setField($field);
@@ -161,7 +161,7 @@ class DiscussionSaving
 
     /**
      * @param Field $field
-     * @param $count
+     * @param       $count
      *
      * @throws ValidationException
      */

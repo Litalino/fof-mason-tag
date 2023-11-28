@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of xsoft/mason-tag.
+ * This file is part of litalino/mason.
  *
  * Copyright (c) FriendsOfFlarum.
  *
@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Xsoft\MasonTag\Api\Serializers;
+namespace Litalino\Mason\Api\Serializers;
 
 use Flarum\Api\Serializer\AbstractSerializer;
-use Xsoft\MasonTag\ByTag;
-use Xsoft\MasonTag\Repositories\FieldRepository;
+use Litalino\Mason\ByTag;
+use Litalino\Mason\Repositories\FieldRepository;
 use Tobscure\JsonApi\Collection;
 use Tobscure\JsonApi\Relationship;
 

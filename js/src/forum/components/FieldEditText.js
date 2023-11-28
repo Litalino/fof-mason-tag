@@ -66,7 +66,7 @@ export default class FieldEditText extends Component {
     }
 
     fieldPlaceholder() {
-        if (app.forum.attribute('xsoft-mason-tag.labels-as-placeholders')) {
+        if (app.forum.attribute('litalino-mason.labels-as-placeholders')) {
             return this.field.name() + (this.field.required() ? ' *' : '');
         }
 

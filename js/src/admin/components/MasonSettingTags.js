@@ -8,7 +8,7 @@ export default class MasonSettingTags extends Component {
     oninit(vnode) {
         super.oninit(vnode);
 
-        this.byTag = app.data.settings['xsoft-mason-tag.by-tag'] > 0;
+        this.byTag = app.data.settings['litalino-mason.by-tag'] > 0;
         this.tagsList = [];
         const tags = app.store.all('tags');
         for ( let i = 0; i < tags.length; i++){   
@@ -24,15 +24,15 @@ export default class MasonSettingTags extends Component {
             <div className="Mason-Container">
                 <div className="Form-group">
                     <label>
-                        <Switch state={this.byTag} onchange={this.updateSetting.bind(this, 'byTag', 'xsoft-mason-tag.by-tag')}>
-                            {app.translator.trans('xsoft-mason-tag.admin.settings.by-tag')}
+                        <Switch state={this.byTag} onchange={this.updateSetting.bind(this, 'byTag', 'litalino-mason.by-tag')}>
+                            {app.translator.trans('litalino-mason.admin.settings.by-tag')}
                         </Switch>
                     </label>
                 </div>
                 {
                     this.byTag && (
                         <div className="Form-group">
-                            <label>{app.translator.trans('xsoft-mason-tag.admin.settings.by-tag-name')}</label>
+                            <label>{app.translator.trans('litalino-mason.admin.settings.by-tag-name')}</label>
                             {this.tagsList.map(tag => (
                                 <div className="js-tag-data" data-id={tag.name}>
                                     <TagFields name={tag.name} id={tag.id} />

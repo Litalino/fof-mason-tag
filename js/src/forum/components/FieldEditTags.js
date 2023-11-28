@@ -41,7 +41,7 @@ export default class DiscussionFields extends Component {
 
     view() {
         if (this.maxPrimary > 1 || this.maxSecondary > 1) {
-            return <div className="Alert">{app.translator.trans('xsoft-mason-tag.forum.tags.inadequate-settings')}</div>;
+            return <div className="Alert">{app.translator.trans('litalino-mason.forum.tags.inadequate-settings')}</div>;
         }
 
         // We take the first child selected or if none, the first parent selected
@@ -54,14 +54,14 @@ export default class DiscussionFields extends Component {
         return (
             <div
                 className={classList('Mason-Field Form-group', {
-                    ['Mason-Field--label-as-placeholder']: app.forum.attribute('xsoft-mason-tag.labels-as-placeholders'),
+                    ['Mason-Field--label-as-placeholder']: app.forum.attribute('litalino-mason.labels-as-placeholders'),
                 })}
             >
-                <label for={`fofMasonTag-selectInput-${inputUuid}`}>{this.fieldLabel()}</label>
+                <label for={`fofMason-selectInput-${inputUuid}`}>{this.fieldLabel()}</label>
                 <span className="Select">
                     <select
                         className="Select-input FormControl"
-                        id={`fofMasonTag-selectInput-${inputUuid}`}
+                        id={`fofMason-selectInput-${inputUuid}`}
                         onchange={(event) => {
                             const id = event.target.value;
 
@@ -104,7 +104,7 @@ export default class DiscussionFields extends Component {
     }
 
     fieldLabel() {
-        let text = app.forum.attribute('xsoft-mason-tag.tags-field-name') || app.translator.trans('xsoft-mason-tag.forum.tags.tags-label');
+        let text = app.forum.attribute('litalino-mason.tags-field-name') || app.translator.trans('litalino-mason.forum.tags.tags-label');
 
         if (this.fieldRequired()) {
             text += ' *';
@@ -114,7 +114,7 @@ export default class DiscussionFields extends Component {
     }
 
     placeholderHidden() {
-        if (app.forum.attribute('xsoft-mason-tag.labels-as-placeholders')) {
+        if (app.forum.attribute('litalino-mason.labels-as-placeholders')) {
             return false;
         }
 
@@ -124,14 +124,14 @@ export default class DiscussionFields extends Component {
     selectPlaceholder() {
         let text = '';
 
-        if (app.forum.attribute('xsoft-mason-tag.labels-as-placeholders')) {
+        if (app.forum.attribute('litalino-mason.labels-as-placeholders')) {
             text += this.fieldLabel() + ' - ';
         }
 
         if (this.fieldRequired()) {
-            text += app.translator.trans('xsoft-mason-tag.forum.answers.choose-option');
+            text += app.translator.trans('litalino-mason.forum.answers.choose-option');
         } else {
-            text += app.translator.trans('xsoft-mason-tag.forum.answers.no-option-selected');
+            text += app.translator.trans('litalino-mason.forum.answers.no-option-selected');
         }
 
         return text;

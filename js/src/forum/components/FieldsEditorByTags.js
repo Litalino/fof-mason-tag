@@ -67,8 +67,8 @@ export default class FieldsEditorByTags extends Component {
     headItems() {
         const items = new ItemList();
 
-        if (app.forum.attribute('xsoft-mason-tag.fields-section-title')) {
-            items.add('title', <h5 className="Mason-Field--title">{app.forum.attribute('xsoft-mason-tag.fields-section-title')}</h5>);
+        if (app.forum.attribute('litalino-mason.fields-section-title')) {
+            items.add('title', <h5 className="Mason-Field--title">{app.forum.attribute('litalino-mason.fields-section-title')}</h5>);
         }
         return items;
     }
@@ -78,7 +78,7 @@ export default class FieldsEditorByTags extends Component {
 
         // taking this feature off beacuse changing tags will affect which fields show up
 
-        // if (app.forum.attribute('xsoft-mason-tag.tags-as-fields')) {
+        // if (app.forum.attribute('litalino-mason.tags-as-fields')) {
         //     items.add(
         //         'tags',
         //         <FieldEditTags
@@ -116,7 +116,7 @@ export default class FieldsEditorByTags extends Component {
                         `field-${field.id()}`,
                         <div
                             class={classList('Mason-Field Form-group', {
-                                ['Mason-Field--label-as-placeholder']: app.forum.attribute('xsoft-mason-tag.labels-as-placeholders'),
+                                ['Mason-Field--label-as-placeholder']: app.forum.attribute('litalino-mason.labels-as-placeholders'),
                             })}
                         >
                             <label>

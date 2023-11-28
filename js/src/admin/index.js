@@ -5,27 +5,27 @@ import Field from '@common/models/Field';
 import ByTag from '@common/models/ByTag';
 import MasonFieldsPage from './pages/MasonFieldsPage';
 
-app.initializers.add('xsoft-ict-mason-tag', () => {
+app.initializers.add('litalino-mason', () => {
     app.store.models['mason-fields'] = Field;
     app.store.models['mason-answers'] = Answer;
     app.store.models['mason-bytags'] = ByTag;
 
     app.extensionData
-        .for('xsoft-ict-mason-tag')
+        .for('litalino-mason')
         .registerPage(MasonFieldsPage)
         .registerPermission(
             {
                 icon: 'fas fa-eye',
-                label: app.translator.trans('xsoft-mason-tag.admin.permissions.see-own-fields'),
-                permission: 'xsoft-mason-tag.see-own-fields',
+                label: app.translator.trans('litalino-mason.admin.permissions.see-own-fields'),
+                permission: 'litalino-mason.see-own-fields',
             },
             'view'
         )
         .registerPermission(
             {
                 icon: 'fas fa-eye',
-                label: app.translator.trans('xsoft-mason-tag.admin.permissions.see-other-fields'),
-                permission: 'xsoft-mason-tag.see-other-fields',
+                label: app.translator.trans('litalino-mason.admin.permissions.see-other-fields'),
+                permission: 'litalino-mason.see-other-fields',
                 allowGuest: true,
             },
             'view'
@@ -33,24 +33,24 @@ app.initializers.add('xsoft-ict-mason-tag', () => {
         .registerPermission(
             {
                 icon: 'fas fa-tasks',
-                label: app.translator.trans('xsoft-mason-tag.admin.permissions.fill-fields'),
-                permission: 'xsoft-mason-tag.fill-fields',
+                label: app.translator.trans('litalino-mason.admin.permissions.fill-fields'),
+                permission: 'litalino-mason.fill-fields',
             },
             'reply'
         )
         .registerPermission(
             {
                 icon: 'fas fa-edit',
-                label: app.translator.trans('xsoft-mason-tag.admin.permissions.update-own-fields'),
-                permission: 'xsoft-mason-tag.update-own-fields',
+                label: app.translator.trans('litalino-mason.admin.permissions.update-own-fields'),
+                permission: 'litalino-mason.update-own-fields',
             },
             'reply'
         )
         .registerPermission(
             {
                 icon: 'fas fa-edit',
-                label: app.translator.trans('xsoft-mason-tag.admin.permissions.update-other-fields'),
-                permission: 'xsoft-mason-tag.update-other-fields',
+                label: app.translator.trans('litalino-mason.admin.permissions.update-other-fields'),
+                permission: 'litalino-mason.update-other-fields',
                 allowGuest: true,
             },
             'moderate'
@@ -58,8 +58,8 @@ app.initializers.add('xsoft-ict-mason-tag', () => {
         .registerPermission(
             {
                 icon: 'fas fa-forward',
-                label: app.translator.trans('xsoft-mason-tag.admin.permissions.skip-required-fields'),
-                permission: 'xsoft-mason-tag.skip-required-fields',
+                label: app.translator.trans('litalino-mason.admin.permissions.skip-required-fields'),
+                permission: 'litalino-mason.skip-required-fields',
             },
             'moderate'
         );

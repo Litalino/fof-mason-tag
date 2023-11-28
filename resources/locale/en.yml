@@ -1,4 +1,4 @@
-xsoft-mason-tag:
+litalino-mason:
     forum:
         discussion-controls:
             edit-answers: Edit fields
@@ -92,7 +92,7 @@ xsoft-mason-tag:
                 This will hide the default tags selector and show a custom dropdown field instead.
                 This will only work if you allowed up to one primary and one secondary tag !
             tags-field-name: Label of the tags field
-            tags-field-name-placeholder: => xsoft-mason-tag.forum.tags.tags-label
+            tags-field-name-placeholder: => litalino-mason.forum.tags.tags-label
 
             composer-height: Composer Height
             composer-height-placeholder: "320"

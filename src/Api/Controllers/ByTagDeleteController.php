@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of xsoft/mason-tag.
+ * This file is part of litalino/mason.
  *
  * Copyright (c) FriendsOfFlarum.
  *
@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Xsoft\MasonTag\Api\Controllers;
+namespace Litalino\Mason\Api\Controllers;
 
 use Flarum\Api\Controller\AbstractDeleteController;
 use Flarum\Http\RequestUtil;
-use Xsoft\MasonTag\Repositories\ByTagRepository;
+use Litalino\Mason\Repositories\ByTagRepository;
 use Illuminate\Support\Arr;
 use Psr\Http\Message\ServerRequestInterface;
 

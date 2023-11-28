@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of xsoft/mason-tag.
+ * This file is part of litalino/mason.
  *
  * Copyright (c) FriendsOfFlarum.
  *
@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Xsoft\MasonTag\Repositories;
+namespace Litalino\Mason\Repositories;
 
-use Xsoft\MasonTag\ByTag;
-use Xsoft\MasonTag\Validators\ByTagValidator;
+use Litalino\Mason\ByTag;
+use Litalino\Mason\Validators\ByTagValidator;
 use Illuminate\Cache\Repository;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;

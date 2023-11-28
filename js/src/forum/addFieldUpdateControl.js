@@ -10,7 +10,7 @@ export default function () {
             items.add(
                 'mason-update-answers',
                 <Button icon="fas fa-tag" onclick={() => app.modal.show(FieldsEditorModal, { discussion })}>
-                    {app.translator.trans('xsoft-mason-tag.forum.discussion-controls.edit-answers')}
+                    {app.translator.trans('litalino-mason.forum.discussion-controls.edit-answers')}
                 </Button>
             );
         }
